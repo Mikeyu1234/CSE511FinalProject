@@ -14,9 +14,9 @@ int main(int argc, char* argv[]){
 
 	int num_nodes = 3;	
 	char* nodes[100];
-	nodes[0] = "130.203.16.31";
-	nodes[1] = "130.203.16.32";
-	nodes[2] = "130.203.16.56";
+	nodes[0] = "10.0.2.19";
+	nodes[1] = "10.0.2.21";
+	nodes[2] = "10.0.2.20";
 	
 	if(argc < 2){
 		printf("Input Error! Please use \" ./client #number \" to denote the client node number\n");

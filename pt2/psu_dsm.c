@@ -24,8 +24,9 @@ void initializeDSM(){
     act.sa_sigaction = handler_invalid;
     sigemptyset(&act.sa_mask);
     sigaction(SIGSEGV, &act, NULL);
-
     
+
+
 }
 
 void psu_dsm_register_datasegment(void* psu_ds_start, size_t psu_ds_size){

@@ -42,6 +42,18 @@ xdr_MallocInp (XDR *xdrs, MallocInp *objp)
 }
 
 bool_t
+xdr_RegisterInp (XDR *xdrs, RegisterInp *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_string (xdrs, &objp->psu_ds_start, ~0))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->psu_ds_size))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
 xdr_RemoteInp (XDR *xdrs, RemoteInp *objp)
 {
 	register int32_t *buf;

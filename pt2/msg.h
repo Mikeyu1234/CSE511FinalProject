@@ -33,6 +33,12 @@ struct MallocInp {
 };
 typedef struct MallocInp MallocInp;
 
+struct RegisterInp {
+	char *psu_ds_start;
+	int psu_ds_size;
+};
+typedef struct RegisterInp RegisterInp;
+
 struct RemoteInp {
 	char *name;
 	int IsRead;
@@ -98,6 +104,7 @@ extern int dsm_1_freeresult ();
 extern  bool_t xdr_InitInp (XDR *, InitInp*);
 extern  bool_t xdr_RequestRet (XDR *, RequestRet*);
 extern  bool_t xdr_MallocInp (XDR *, MallocInp*);
+extern  bool_t xdr_RegisterInp (XDR *, RegisterInp*);
 extern  bool_t xdr_RemoteInp (XDR *, RemoteInp*);
 extern  bool_t xdr_NetworkInp (XDR *, NetworkInp*);
 
@@ -105,6 +112,7 @@ extern  bool_t xdr_NetworkInp (XDR *, NetworkInp*);
 extern bool_t xdr_InitInp ();
 extern bool_t xdr_RequestRet ();
 extern bool_t xdr_MallocInp ();
+extern bool_t xdr_RegisterInp ();
 extern bool_t xdr_RemoteInp ();
 extern bool_t xdr_NetworkInp ();
 

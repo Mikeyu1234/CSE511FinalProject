@@ -13,6 +13,11 @@ struct MallocInp{
 	int size;
 };
 
+struct RegisterInp{
+	string psu_ds_start<>;
+	int psu_ds_size;
+};
+
 struct RemoteInp{
 	string name<>;
 	int IsRead;

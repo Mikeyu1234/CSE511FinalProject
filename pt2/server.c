@@ -38,8 +38,8 @@ init_1_svc(InitInp* argp, void *result, struct svc_req *rqstp)
 	for(int i=0;i<num_nodes;i++){
 		nodes[i] = (char*)malloc(sizeof(char)*20);
 	}
-	strcpy(nodes[0],"104.39.153.3");
-	//strcpy(nodes[1],"130.203.16.21");
+	strcpy(nodes[0],"10.0.0.21");
+	strcpy(nodes[1],"10.0.2.19");
 	mynode = argp->mynode;
 	client_pid = argp->mypid;
 	//init directory Table

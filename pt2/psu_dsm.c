@@ -111,7 +111,7 @@ void psu_dsm_register_datasegment(void* psu_ds_start, size_t psu_ds_size){
     inp.psu_ds_start = (void *)psu_ds_start;
     inp.psu_ds_size = (int)psu_ds_size;
     enum clnt_stat stat;
-    stat = register_1(&inp, &result, clnt);
+    stat = malloc_1(&inp, &result, clnt);
     if (stat != RPC_SUCCESS) {
         clnt_perror(clnt,"register_1 failed\n");
         exit(1);

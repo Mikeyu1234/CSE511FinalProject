@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+#include <sys/stat.h>
+
 
 #define MAX_NODE_NAME 20
 
@@ -32,13 +34,61 @@ void* remote_request(void* arg)
     return;
 }
 
-void psu_init_lock(char** nodes, int lockno){
+char* read_node_name(int lockno)
+{
+    char * filename = "node_name.txt";
+    FILE* fp = fopen(filename, "r");
+    struct stat sb;
+    char * file_contents = (char*)malloc(sb.st_size);
+
+    
+    stat(filename, &sb);
+    if (fp == NULL)
+    {
+        printf("node_name file not found\n");
+        exit(1);
+    }
+    char* node_name[MAX_NODE_NAME];
+    int i = 0;
+    while (fscanf(fp, "%[^\n] ", file_contents) != EOF) {
+        printf("> %s\n", file_contents);
+        node_name[i] = file_contents;
+        printf("Read node%s\n", node_name[i]);
+        i++;
+    }
+    fclose(fp);
+}
+
+void psu_init_lock( int lockno){
     /*This function will create the lock specified by lockno. Here you can assume that all nodes will participate in the locking mechanism.*/
     global_nodes = (char **)malloc(sizeof(char *)*lockno);
+    
+    char * filename = "node_name.txt";
+    FILE* fp = fopen(filename, "r");
+    struct stat sb;
+    char * file_contents = (char*)malloc(sb.st_size);
+
+    
+    stat(filename, &sb);
+    if (fp == NULL)
+    {
+        printf("node_name file not found\n");
+        exit(1);
+    }
+    char* node_name[10];
+    int i = 0;
+    while (fscanf(fp, "%[^\n] ", file_contents) != EOF) {
+        printf("> %s\n", file_contents);
+        node_name[i] = file_contents;
+        printf("Read node%s\n", node_name[i]);
+        i++;
+    }
+    fclose(fp);
+
     for ( int i = 0; i < lockno; i++)
     {
-        global_nodes[i] = (char *)malloc(sizeof(char)*MAX_NODE_NAME);
-        strcpy(global_nodes[i], nodes[i]);
+        global_nodes[i] = (char *)malloc(sizeof(char)*1000);
+        strcpy(global_nodes[i], node_name[i]);
     }
     global_num_nodes = lockno;
     return ;

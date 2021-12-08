@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	nodes[0] = "10.0.2.19";
 	nodes[1] = "10.0.2.21";
 	nodes[2] = "10.0.2.20";
-	
+
 	if(argc < 2){
 		printf("Input Error! Please use \" ./client #number \" to denote the client node number\n");
 		return 0;	
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 	mynode = strtol(argv[1],NULL,10);
 	
 	
-	psu_init_lock(nodes, num_nodes);
+	psu_init_lock( num_nodes);
 	psu_mutex_lock(0);
 
 	sleep(8);

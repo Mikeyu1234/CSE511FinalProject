@@ -4,7 +4,9 @@ extern int global_num_nodes;
 
 extern int mynode;
 
-void psu_init_lock(char** nodes, int num_nodes); 
+char* read_node_name(int lockno);
+
+void psu_init_lock( int num_nodes); 
 
 void psu_mutex_lock(int lock_number);
 
